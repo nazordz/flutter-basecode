@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
-import 'package:gooritabasecode/app/modules/home/middlewares/authenticated_middleware.dart';
 
 import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/middlewares/authenticated_middleware.dart';
+import '../modules/home/profile/bindings/profile_binding.dart';
+import '../modules/home/profile/views/profile_view.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
@@ -25,6 +27,13 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => const LoginView(),
       binding: LoginBinding(),
+      children: [
+        GetPage(
+          name: _Paths.PROFILE,
+          page: () => const ProfileView(),
+          binding: ProfileBinding(),
+        ),
+      ],
     ),
   ];
 }

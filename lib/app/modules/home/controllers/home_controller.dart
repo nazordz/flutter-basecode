@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
-import 'package:gooritabasecode/app/modules/home/controllers/authentication_manager_controller.dart';
 import 'package:gooritabasecode/app/routes/app_pages.dart';
+import 'package:gooritabasecode/app/services/AuthenticationService.dart';
 
 class HomeController extends GetxController {
-  final AuthenticationManagerController authManager = Get.find();
+  final authService = Get.find<AuthenticationService>();
 
   void logout() async {
     Get.snackbar('Logout', 'Logout successfully');
-    authManager.logOut();
+    authService.logOut();
     Get.offNamed(Routes.LOGIN);
   }
 
@@ -18,12 +18,6 @@ class HomeController extends GetxController {
 
   @override
   void onReady() async {
-    // var loginStatus = await authManager.checkLoginStatus();
-    // print(loginStatus);
-    // print(authManager.isLogged.value);
-    // if (!authManager.isLogged.value) {
-    //   Get.offNamed(Routes.LOGIN);
-    // }
     super.onReady();
   }
 

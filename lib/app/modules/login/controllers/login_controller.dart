@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:get/get.dart';
-import 'package:gooritabasecode/app/modules/home/controllers/authentication_manager_controller.dart';
 import 'package:gooritabasecode/app/modules/login/providers/login_provider.dart';
 import 'package:gooritabasecode/app/routes/app_pages.dart';
+import 'package:gooritabasecode/app/services/AuthenticationService.dart';
 
 class LoginController extends GetxController {
   final loginFormKey = GlobalKey<FormState>();
@@ -14,9 +14,9 @@ class LoginController extends GetxController {
   final mustEmail = ValidationBuilder().email().build();
 
   LoginProvider loginProvider;
-  AuthenticationManagerController authManager;
+  final authService = Get.find<AuthenticationService>();
 
-  LoginController({required this.loginProvider, required this.authManager});
+  LoginController({required this.loginProvider});
 
   void login() async {
     try {
@@ -24,7 +24,8 @@ class LoginController extends GetxController {
         var result = await loginProvider.authenticate(
             emailController.text, passwordController.text);
         if (result != null) {
-          await authManager.login(result.bearerToken, result.refreshToken);
+          await authService.login(result.bearerToken, result.refreshToken);
+          // await authManager.login(result.bearerToken, result.refreshToken);
           Get.snackbar('Login', 'Login successfully');
           Get.offNamed(Routes.HOME);
         } else {

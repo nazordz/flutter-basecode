@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:gooritabasecode/app/services/AuthenticationService.dart';
 import 'package:gooritabasecode/config/color_schemes.g.dart';
 import 'package:gooritabasecode/config/theme.dart';
 
@@ -12,7 +13,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
+  await initServices();
   runApp(const MyApp());
+}
+
+Future<void> initServices() async {
+  await Get.putAsync(() => AuthenticationService().init());
 }
 
 class MyApp extends StatelessWidget {

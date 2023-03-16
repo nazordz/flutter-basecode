@@ -12,10 +12,10 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       email: json['email'] as String,
       phone: json['phone'] as String,
       roleId: json['role_id'] as String,
-      role: Role.fromJson(json['roles'] as Map<String, dynamic>),
+      role: Role.fromJson(json['role'] as Map<String, dynamic>),
       createdAt: json['created_at'] as String,
       updatedAt: json['updated_at'] as String,
-      deletedAt: json['deleted_at'] as String,
+      deletedAt: json['deleted_at'] as String?,
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -24,7 +24,7 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'email': instance.email,
       'phone': instance.phone,
       'role_id': instance.roleId,
-      'roles': instance.role,
+      'role': instance.role,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
       'deleted_at': instance.deletedAt,

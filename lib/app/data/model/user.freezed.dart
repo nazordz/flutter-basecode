@@ -26,14 +26,14 @@ mixin _$User {
   String get phone => throw _privateConstructorUsedError;
   @JsonKey(name: 'role_id')
   String get roleId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'roles')
+  @JsonKey(name: 'role')
   Role get role => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   String get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   String get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'deleted_at')
-  String get deletedAt => throw _privateConstructorUsedError;
+  String? get deletedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,10 +51,10 @@ abstract class $UserCopyWith<$Res> {
       String email,
       String phone,
       @JsonKey(name: 'role_id') String roleId,
-      @JsonKey(name: 'roles') Role role,
+      @JsonKey(name: 'role') Role role,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'updated_at') String updatedAt,
-      @JsonKey(name: 'deleted_at') String deletedAt});
+      @JsonKey(name: 'deleted_at') String? deletedAt});
 
   $RoleCopyWith<$Res> get role;
 }
@@ -80,7 +80,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? role = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? deletedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -115,10 +115,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
-      deletedAt: null == deletedAt
+      deletedAt: freezed == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 
@@ -143,10 +143,10 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String email,
       String phone,
       @JsonKey(name: 'role_id') String roleId,
-      @JsonKey(name: 'roles') Role role,
+      @JsonKey(name: 'role') Role role,
       @JsonKey(name: 'created_at') String createdAt,
       @JsonKey(name: 'updated_at') String updatedAt,
-      @JsonKey(name: 'deleted_at') String deletedAt});
+      @JsonKey(name: 'deleted_at') String? deletedAt});
 
   @override
   $RoleCopyWith<$Res> get role;
@@ -169,7 +169,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? role = null,
     Object? createdAt = null,
     Object? updatedAt = null,
-    Object? deletedAt = null,
+    Object? deletedAt = freezed,
   }) {
     return _then(_$_User(
       id: null == id
@@ -204,10 +204,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
-      deletedAt: null == deletedAt
+      deletedAt: freezed == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -221,7 +221,7 @@ class _$_User implements _User {
       required this.email,
       required this.phone,
       @JsonKey(name: 'role_id') required this.roleId,
-      @JsonKey(name: 'roles') required this.role,
+      @JsonKey(name: 'role') required this.role,
       @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'updated_at') required this.updatedAt,
       @JsonKey(name: 'deleted_at') required this.deletedAt});
@@ -240,7 +240,7 @@ class _$_User implements _User {
   @JsonKey(name: 'role_id')
   final String roleId;
   @override
-  @JsonKey(name: 'roles')
+  @JsonKey(name: 'role')
   final Role role;
   @override
   @JsonKey(name: 'created_at')
@@ -250,7 +250,7 @@ class _$_User implements _User {
   final String updatedAt;
   @override
   @JsonKey(name: 'deleted_at')
-  final String deletedAt;
+  final String? deletedAt;
 
   @override
   String toString() {
@@ -302,10 +302,10 @@ abstract class _User implements User {
       required final String email,
       required final String phone,
       @JsonKey(name: 'role_id') required final String roleId,
-      @JsonKey(name: 'roles') required final Role role,
+      @JsonKey(name: 'role') required final Role role,
       @JsonKey(name: 'created_at') required final String createdAt,
       @JsonKey(name: 'updated_at') required final String updatedAt,
-      @JsonKey(name: 'deleted_at') required final String deletedAt}) = _$_User;
+      @JsonKey(name: 'deleted_at') required final String? deletedAt}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -321,7 +321,7 @@ abstract class _User implements User {
   @JsonKey(name: 'role_id')
   String get roleId;
   @override
-  @JsonKey(name: 'roles')
+  @JsonKey(name: 'role')
   Role get role;
   @override
   @JsonKey(name: 'created_at')
@@ -331,7 +331,7 @@ abstract class _User implements User {
   String get updatedAt;
   @override
   @JsonKey(name: 'deleted_at')
-  String get deletedAt;
+  String? get deletedAt;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

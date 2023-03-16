@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
-import 'package:gooritabasecode/app/modules/home/user_model.dart';
+import 'package:gooritabasecode/app/data/model/user.dart';
 import 'package:gooritabasecode/config/cache_manager.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
-class AuthenticationManagerController extends GetxController with CacheManager {
+class AuthenticationService extends GetxService with CacheManager {
   final isLogged = false.obs;
+  final Rxn<User> user = Rxn<User>();
 
   void logOut() {
     isLogged.value = false;
@@ -13,7 +14,6 @@ class AuthenticationManagerController extends GetxController with CacheManager {
 
   Future<void> login(String token, String refreshToken) async {
     isLogged.value = true;
-    //Token is cached
     await Future.wait([saveToken(token), saveRefreshToken(refreshToken)]);
   }
 
@@ -21,7 +21,7 @@ class AuthenticationManagerController extends GetxController with CacheManager {
     final token = await getToken();
     if (token != null) {
       var decodedToken = JwtDecoder.decode(token);
-      return decodedToken['user'];
+      return User.fromJson(decodedToken['user']);
     }
 
     return null;
@@ -34,5 +34,17 @@ class AuthenticationManagerController extends GetxController with CacheManager {
       return true;
     }
     return false;
+  }
+
+  Future<AuthenticationService> init() async {
+    var statusLogin = await checkLoginStatus();
+    if (statusLogin) {
+      isLogged.value = true;
+      var takeUser = await getUser();
+      if (takeUser != null) {
+        user.value = takeUser;
+      }
+    }
+    return this;
   }
 }
