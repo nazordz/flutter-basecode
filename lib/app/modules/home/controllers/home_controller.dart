@@ -5,6 +5,12 @@ import 'package:gooritabasecode/app/services/AuthenticationService.dart';
 class HomeController extends GetxController {
   final authService = Get.find<AuthenticationService>();
 
+  var tabIndex = 0.obs;
+
+  void changeTabIndex(int index) {
+    tabIndex.value = index;
+  }
+
   void logout() async {
     Get.snackbar('Logout', 'Logout successfully');
     authService.logOut();

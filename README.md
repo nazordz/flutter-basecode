@@ -13,7 +13,7 @@ run build runner `flutter pub run build_runner build`
 2. [get](https://pub.dev/packages/get) - Get framework
 3. [json_serializable](https://pub.dev/packages/json_serializable) - JSON Serialization
 4. [flutter_dotenv](https://pub.dev/packages/flutter_dotenv) - ENV configuration
-5. [getwidget](https://docs.getwidget.dev/) - UI Kit library
+5. [dio](https://pub.dev/packages/dio) - Http library
 6. [flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage) - Persistent Storage
 7. [flutter_screenutil](https://pub.dev/packages/flutter_screenutil) - Adapting screen and font size
 8. [form_validator](https://pub.dev/packages/form_validator) - Form validator

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class ProfileController extends GetxController {
-  //TODO: Implement ProfileController
+class NewsScreenController extends GetxController {
+  //TODO: Implement NewsScreenController
 
   final count = 0.obs;
   @override

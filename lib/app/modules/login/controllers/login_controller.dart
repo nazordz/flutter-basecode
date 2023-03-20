@@ -13,10 +13,8 @@ class LoginController extends GetxController {
   final validate = ValidationBuilder().build();
   final mustEmail = ValidationBuilder().email().build();
 
-  LoginProvider loginProvider;
+  final loginProvider = Get.find<LoginProvider>();
   final authService = Get.find<AuthenticationService>();
-
-  LoginController({required this.loginProvider});
 
   void login() async {
     try {
@@ -25,7 +23,6 @@ class LoginController extends GetxController {
             emailController.text, passwordController.text);
         if (result != null) {
           await authService.login(result.bearerToken, result.refreshToken);
-          // await authManager.login(result.bearerToken, result.refreshToken);
           Get.snackbar('Login', 'Login successfully');
           Get.offNamed(Routes.HOME);
         } else {
