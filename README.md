@@ -1,6 +1,6 @@
 # Goorita base code
 This app using material design v3 and use this [builder](https://m3.material.io/theme-builder) to generated this theme.
-run build runner `flutter pub run build_runner build`
+run build runner with `flutter pub run build_runner build` after create/update model files.
 
 ## Architecture of this project: MVVM
 
@@ -17,7 +17,7 @@ MVVM (Model View ViewModel) is one of the most popular architectural pattern for
 ## Dependecies
 1. [get_cli](https://pub.dev/packages/get_cli) - CLI for Get framework
 2. [get](https://pub.dev/packages/get) - Get framework
-3. [json_serializable](https://pub.dev/packages/json_serializable) - JSON Serialization
+3. [freezed](https://pub.dev/packages/freezed) - JSON Serialization
 4. [flutter_dotenv](https://pub.dev/packages/flutter_dotenv) - ENV configuration
 5. [dio](https://pub.dev/packages/dio) - Http library
 6. [flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage) - Persistent Storage
